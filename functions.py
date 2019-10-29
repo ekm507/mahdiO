@@ -98,5 +98,3 @@ def push_instrument1(step):
             return b
         else:
             return 0
-
-print(instrument1(100, 0.01))
