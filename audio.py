@@ -8,7 +8,7 @@ import struct
 import functions
 
 # frequency is the number of times a wave repeats a second
-frequency = 100
+frequency = 1000
 # The sampling rate of the analog to digital convert
 sampling_rate = 48000.0
 # file length in secounds
@@ -22,17 +22,18 @@ file = "test.wav"
 
 # conversions:
 """
-returns 2 * pi * f * x / sr
-2 * pi * f : convert f to w. time frequency to angular frequency.
+returns x / sr
+
 x / sr : convert sample number to time
-so it actually returns w * t
+so it actually returns t
 """
 # normalize
 def norm(x):
-    return 2 * np.pi * frequency * x / sampling_rate
+    return  2 * np.pi *x / sampling_rate
 
 # create a simple audio
-audio_wave = [functions.lol(frequency, norm(x) / 1.0) for x in range(num_samples)]
+# audio_wave = [functions.lol(frequency, norm(x) / 1.0) for x in range(num_samples)]
+audio_wave = [functions.instrument_sin(frequency, norm(x)) for x in range(num_samples)]
 
 # file properties
 nframes=num_samples
