@@ -81,8 +81,7 @@ def instrument1(main_freq, step):
     
 
     # fade amplitude.
-    # amplitude = push_instrument1(step)
-    amplitude = 1
+    amplitude = push_instrument1(step)
     # generate
     return harmonics(np.sin, main_freq, harmonics_list, step) * amplitude
 
@@ -98,3 +97,12 @@ def push_instrument1(step):
             return b
         else:
             return 0
+
+def instrument_sin(freq, step):
+    h = [
+        (1, 1)
+    ]
+
+    a = 1
+
+    return a * harmonics(np.sin, freq, h, step)
