@@ -7,7 +7,11 @@ def module(x, b):
     return x - (int(x / b) * b)
 
 def square(x):
-    return int(x) % 2
+    a = module(x, 2 * np.pi)
+    if a < np.pi:
+        return 1
+    else:
+        return -1
 
 def sawtooth(x):
     return module(x, 2)
