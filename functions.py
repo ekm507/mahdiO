@@ -23,7 +23,6 @@ def square(x):
     else:
         return -1
 
-
 # works like sin function but gives a sawtooth.
 def sawtooth(x):
     # mirror x on [0 - 2*pi] period
@@ -71,19 +70,19 @@ def instrument1(main_freq, step):
     # each tuple is like:
     # (harmonic number, amplitude)
     harmonics_list = [
-        (1, 1),
-        (2, 0.8),
-        (3, 0.5),
-        (4, 0.5),
-        (5, 0.9),
-        (6, 0.3),
-        (7, 0.3),
+        (1, 0.2),
+        (2, 1.0),
+        (3, 0.39),
+        (4, 0.2),
+        (5, 0.05),
+        (6, 0.02),
+        (7, 0.01),
     ]
     
-    harmonics_list = []
 
     # fade amplitude.
-    amplitude = push_instrument1(step)
+    # amplitude = push_instrument1(step)
+    amplitude = 1
     # generate
     return harmonics(np.sin, main_freq, harmonics_list, step) * amplitude
 
@@ -99,3 +98,5 @@ def push_instrument1(step):
             return b
         else:
             return 0
+
+print(instrument1(100, 0.01))
