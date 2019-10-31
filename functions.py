@@ -92,7 +92,7 @@ def push_instrument1(step):
     if step <= 0:
         return 1
     else:
-        b =  1 - np.log(step / 3000.0 + 1)
+        b =  1 - np.log(step + 1)
         if b > 0:
             return b
         else:
