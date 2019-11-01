@@ -8,11 +8,11 @@ import struct
 import functions
 
 # frequency is the number of times a wave repeats a second
-frequency = 1000
+frequency = 352
 # The sampling rate of the analog to digital convert
 sampling_rate = 48000.0
 # file length in secounds
-duration = 1 # secounds
+duration = 0.268 + 0.3 # secounds
 # number of samples to generate
 num_samples = int( sampling_rate * duration)
 # amplitude of the audio
@@ -32,8 +32,42 @@ def norm(x):
     return  2 * np.pi *x / sampling_rate
 
 # create a simple audio
-# audio_wave = [functions.lol(frequency, norm(x) / 1.0) for x in range(num_samples)]
-audio_wave = [functions.instrument_sin(frequency, norm(x)) for x in range(num_samples)]
+audio_wave1 = [functions.instrument1(frequency, norm(x)) for x in range(num_samples)]
+audio_wave2 = [functions.instrument1(frequency * 2, norm(x)) for x in range(num_samples)]
+
+
+def create_music(notes):
+    audio_wave = []
+    main_freq = 100
+    for note, duration in notes:
+        num_samples = int( sampling_rate * duration)
+        audio_wave.append( [functions.instrument1(main_freq * note, norm(x)) for x in range(num_samples)] )
+    return audio_wave
+
+fullNote = 0.3 # seconds
+
+notes = [
+    (1, fullNote),
+    (1, fullNote),
+    (5, fullNote),
+    (5, fullNote),
+    (6, fullNote),
+    (6, fullNote),
+    (5, fullNote * 2),
+    (4, fullNote),
+    (4, fullNote),
+    (3, fullNote), 
+    (3, fullNote),
+    (2, fullNote),
+    (2, fullNote),
+    (1, fullNote)
+]
+
+audio_wave3 = create_music(notes)
+audio_wave4 = []
+for i in audio_wave3:
+    audio_wave4 += i
+
 
 # file properties
 nframes=num_samples
@@ -48,5 +82,5 @@ wav_file=wave.open(file, 'w')
 wav_file.setparams((nchannels, sampwidth, int(sampling_rate), nframes, comptype, compname))
 
 # write the audio to file
-for s in audio_wave:
+for s in audio_wave4:
    wav_file.writeframes(struct.pack('h', int(s*amplitude)))
