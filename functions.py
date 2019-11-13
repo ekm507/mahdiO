@@ -83,7 +83,7 @@ def instrument1(main_freq, step):
     # fade amplitude.
     amplitude = push_instrument1(step)
     # generate
-    return harmonics(np.sin, main_freq, harmonics_list, step) * amplitude
+    return harmonics(square, main_freq, harmonics_list, step) * amplitude
 
 # amplitude per time function for instrument 1
 # using this, played note gets faded during time
@@ -92,11 +92,14 @@ def push_instrument1(step):
     if step <= 0:
         return 1
     else:
-        b =  1 - np.log(step + 1)
-        if b > 0:
-            return b
-        else:
+        b =  (1 - np.log(step / 2 + 1) )* np.abs((np.cos(step * 4) ))
+        b = 0.4 * np.exp(-step / 2) * np.abs(np.sin(step * 4) )
+        if b > 0.4:
+            return 0.4
+        elif b < 0:
             return 0
+        else:
+            return b
 
 def instrument_sin(freq, step):
     h = [
@@ -105,4 +108,4 @@ def instrument_sin(freq, step):
 
     a = 1
 
-    return a * harmonics(np.sin, freq, h, step)
+    return a * harmonics(square, freq, h, step)
