@@ -8,7 +8,7 @@ import struct
 import functions
 
 # frequency is the number of times a wave repeats a second
-frequency = 352
+frequency = 349.23
 # The sampling rate of the analog to digital convert
 sampling_rate = 48000.0
 # file length in secounds
@@ -32,13 +32,13 @@ def norm(x):
     return  2 * np.pi *x / sampling_rate
 
 # create a simple audio
-audio_wave1 = [functions.instrument1(frequency, norm(x)) for x in range(num_samples)]
-audio_wave2 = [functions.instrument1(frequency * 2, norm(x)) for x in range(num_samples)]
+# audio_wave1 = [functions.instrument1(frequency, norm(x)) for x in range(num_samples)]
+#audio_wave2 = [functions.instrument_sin(frequency * 2, norm(x)) for x in range(num_samples * 4)]
 
 
 def create_music(notes):
     audio_wave = []
-    main_freq = 100
+    main_freq = 110.00 # A2
     for note, duration in notes:
         num_samples = int( sampling_rate * duration)
         audio_wave.append( [functions.instrument1(main_freq * note, norm(x)) for x in range(num_samples)] )
