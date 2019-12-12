@@ -6,6 +6,8 @@ import numpy as np
 import struct
 # generate functions for audio
 import functions
+# music instruments used
+import instruments
 
 # frequency is the number of times a wave repeats a second
 frequency = 349.23
@@ -41,7 +43,7 @@ def create_music(notes):
     main_freq = 110.00 # A2
     for note, duration in notes:
         num_samples = int( sampling_rate * duration)
-        audio_wave.append( [functions.instrument1(main_freq * note, norm(x)) for x in range(num_samples)] )
+        audio_wave.append( [instruments.instrument1(main_freq * note, norm(x)) for x in range(num_samples)] )
     return audio_wave
 
 fullNote = 0.3 # seconds
