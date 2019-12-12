@@ -58,6 +58,12 @@ def guard(number, low, high):
     else:
         return number
 
+
+# normalize
+def pi_norm(x, max_x):
+    return  2 * np.pi *x / max_x
+
+
 # generate harmonics for a waveform
 """
 this gets 4 paramethers.
