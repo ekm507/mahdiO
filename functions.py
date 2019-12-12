@@ -49,6 +49,15 @@ def whiteNoise2(x):
     detail = 1000.0
     return randbelow(int(detail)) / detail
 
+# guard a number between infimum and suprimum
+def guard(number, low, high):
+    if number < low:
+        return low
+    elif number > high:
+        return high
+    else:
+        return number
+
 # generate harmonics for a waveform
 """
 this gets 4 paramethers.
@@ -83,23 +92,20 @@ def instrument1(main_freq, step):
     # fade amplitude.
     amplitude = push_instrument1(step)
     # generate
-    return harmonics(square, main_freq, harmonics_list, step) * amplitude
+    return harmonics(np.sin, main_freq, harmonics_list, step) * amplitude
 
 # amplitude per time function for instrument 1
 # using this, played note gets faded during time
 # TODO: algorithm should be changed
 def push_instrument1(step):
+    min_amp = 0
+    max_amp = 0.4
     if step <= 0:
-        return 1
+        return max_amp
     else:
-        b =  (1 - np.log(step / 2 + 1) )* np.abs((np.cos(step * 4) ))
-        b = 0.4 * np.exp(-step / 2) * np.abs(np.sin(step * 4) )
-        if b > 0.4:
-            return 0.4
-        elif b < 0:
-            return 0
-        else:
-            return b
+        # b =  (1 - np.log(step / 2 + 1) )* np.abs((np.cos(step * 4) ))
+        b = max_amp * np.exp(-step / 2) * np.abs(np.sin(step * 4) )
+        return guard(b, min_amp, max_amp)
 
 def instrument_sin(freq, step):
     h = [
