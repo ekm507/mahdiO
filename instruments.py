@@ -49,7 +49,7 @@ def instrument2(main_freq, step):
         (8, 0.05)
     ]
 
-    amplitude = push_instrument1(step)
+    amplitude = push_instrument2(step)
     return harmonics(np.sin, main_freq, harmonics_list, step) * amplitude
 
 def push_instrument2(step):
@@ -57,8 +57,8 @@ def push_instrument2(step):
     max_amp = 0.4
     if step <=0:
         b = max_amp
-    elif step <= 2 * np.pi:
-        b = max_amp * np.cos(step)
+    elif step <= np.pi:
+        b = max_amp * np.cos(step / 2)
     else:
         b = 0
     return guard(b, min_amp, max_amp)
