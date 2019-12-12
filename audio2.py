@@ -6,6 +6,8 @@ import numpy as np
 import struct
 # generate instrument notes for audio
 import instruments
+# for creating music
+import music
 
 # frequency is the number of times a wave repeats a second
 frequency = 349.23
@@ -40,7 +42,7 @@ def create_note(note):
     main_freq = 110.00
     freq = main_freq * number
     num_samples = int( sampling_rate * duration)
-    audio_wave = [instruments.instrument1(freq, norm(x)) for x in range(num_samples)]
+    audio_wave = [instruments.instrument2(freq, norm(x)) for x in range(num_samples)]
     return audio_wave
 
 
@@ -87,7 +89,7 @@ notes2 = [
     (7, fullNote)
 ]
 
-audio_wave3 = create_music(notes2)
+audio_wave3 = music.create_music(notes2, instruments.instrument2, sampling_rate)
 
 
 # file properties
