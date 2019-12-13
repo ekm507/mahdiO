@@ -1,2 +1,3 @@
 test.wav
 __pycache__/functions.cpython-38.pyc
+*.pyc
