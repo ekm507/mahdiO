@@ -11,13 +11,13 @@ same as fmod function in C++ STL
 Given two floating-point numbers, this finds the remainder (module).
 for more info visit wiki page: https://en.wikipedia.org/wiki/Modulo_operation
 """
-def module(x, b):
+def modulo(x, b):
     return x - (int(x / b) * b)
 
 # works like sin function but gives a squarewave.
 def square(x):
     # mirror x on [0 - 2*pi] period
-    a = module(x, 2 * np.pi)
+    a = modulo(x, 2 * np.pi)
     if a < np.pi:
         return 1
     else:
@@ -26,12 +26,12 @@ def square(x):
 # works like sin function but gives a sawtooth.
 def sawtooth(x):
     # mirror x on [0 - 2*pi] period
-    return module(x, 2 * np.pi)
+    return modulo(x, 2 * np.pi)
 
 # works like sin function but gives a triangle.
 def triangle(x):
     # mirror x on [0 - 2*pi] period
-    a = module(x, 2 * np.pi)
+    a = modulo(x, 2 * np.pi)
     # normalize a
     a /= np.pi
     if a < 1:
