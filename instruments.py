@@ -44,8 +44,7 @@ def push_instrument1(step):
 # frequency per time function for instrument 1
 # frequency in this function decreases over time.
 def frequency_instrument1(main_freq, step):
-    base_freq = main_freq * np.exp(-step / 2)
-    return base_freq
+    return main_freq
 
 def instrument2(main_freq, step):
 
