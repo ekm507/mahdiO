@@ -11,7 +11,7 @@ def create_music(notes_list, instrument, sampling_rate):
     note_frame = 0
     noteByFrequency = []
     for number, duration in notes_list:
-        noteByFrequency.append(tuple(midi2freq(number), duration))
+        noteByFrequency.append((midi2freq(number), duration))
 
     for frequency, duration in noteByFrequency:
         note = notes.create_note((frequency, note_duration), instrument, sampling_rate)
