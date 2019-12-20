@@ -50,7 +50,7 @@ def create_note(note):
 def create_music(notes):
     note_duration = 4.0
     file_duration = 0
-    for n, duration in notes:
+    for _, duration in notes:
         file_duration += duration
     file_duration += note_duration
     audio_wave = [0 for i in range(int(file_duration * sampling_rate))]
