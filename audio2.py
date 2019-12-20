@@ -83,13 +83,17 @@ notes1 = [
 ]
 
 notes2 = [
-    (1, fullNote),
-    (5, fullNote),
-    (8, fullNote),
-    (7, fullNote)
+    (71, fullNote),
+    (75, fullNote),
+    (78, fullNote),
+    (77, fullNote)
 ]
 
-audio_wave3 = music.create_music(notes2, instruments.instrument2, sampling_rate)
+notes3 = [
+    (72, fullNote)
+]
+
+audio_wave3 = music.create_music(notes3, instruments.instrument1, sampling_rate)
 
 
 # file properties
