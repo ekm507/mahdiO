@@ -1,4 +1,6 @@
-from functions import *
+# used for generationg harmonical waveforms
+from functions import guard, harmonics
+# used for basic mathematical operations
 import numpy as np
 
 # a simple music instrument, made using harmonics function.
@@ -18,10 +20,13 @@ def instrument1(main_freq, step):
     ]
         
 
-    # fade amplitude.
+    # amplitude changes over time.
     amplitude = push_instrument1(step)
-    # generate
-    return harmonics(np.sin, main_freq, harmonics_list, step) * amplitude
+    # frequency changes over time.
+    base_freq = frequency_instrument1(main_freq, step)
+
+    # generate a sample for the audio
+    return harmonics(np.sin, base_freq, harmonics_list, step) * amplitude
 
 # amplitude per time function for instrument 1
 # using this, played note gets faded during time
@@ -35,6 +40,12 @@ def push_instrument1(step):
         # b =  (1 - np.log(step / 2 + 1) )* np.abs((np.cos(step * 4) ))
         b = max_amp * np.exp(-step / 2) * np.abs(np.sin(step * 4) )
         return guard(b, min_amp, max_amp)
+
+# frequency per time function for instrument 1
+# frequency in this function decreases over time.
+def frequency_instrument1(main_freq, step):
+    base_freq = main_freq * np.exp(-step / 2)
+    return base_freq
 
 def instrument2(main_freq, step):
 
