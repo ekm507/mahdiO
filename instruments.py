@@ -1,7 +1,8 @@
 # used for generationg harmonical waveforms
 from functions import guard, harmonics
 # used for basic mathematical operations
-import numpy as np
+import math
+
 
 # a simple music instrument, made using harmonics function.
 # main frequency is the music note frequency to be played
@@ -26,7 +27,7 @@ def instrument1(main_freq, step):
     base_freq = frequency_instrument1(main_freq, step)
 
     # generate a sample for the audio
-    return harmonics(np.sin, base_freq, harmonics_list, step) * amplitude
+    return harmonics(math.sin, base_freq, harmonics_list, step) * amplitude
 
 # amplitude per time function for instrument 1
 # using this, played note gets faded during time
@@ -37,8 +38,8 @@ def push_instrument1(step):
     if step <= 0:
         return max_amp
     else:
-        # b =  (1 - np.log(step / 2 + 1) )* np.abs((np.cos(step * 4) ))
-        b = max_amp * np.exp(-step / 2) * np.abs(np.sin(step * 4) )
+        # b =  (1 - math.log(step / 2 + 1) )* abs((math.cos(step * 4) ))
+        b = max_amp * math.exp(-step / 2) * abs(math.sin(step * 4) )
         return guard(b, min_amp, max_amp)
 
 # frequency per time function for instrument 1
@@ -60,15 +61,15 @@ def instrument2(main_freq, step):
     ]
 
     amplitude = push_instrument2(step)
-    return harmonics(np.sin, main_freq, harmonics_list, step) * amplitude
+    return harmonics(math.sin, main_freq, harmonics_list, step) * amplitude
 
 def push_instrument2(step):
     min_amp = 0
     max_amp = 0.4
     if step <=0:
         b = max_amp
-    elif step <= np.pi:
-        b = max_amp * np.cos(step / 2)
+    elif step <= math.pi:
+        b = max_amp * math.cos(step / 2)
     else:
         b = 0
     return guard(b, min_amp, max_amp)
@@ -87,11 +88,11 @@ def instrument3(main_freq, step):
     ]
 
     amplitude = push_instrument3(step)
-    return harmonics(np.sin, main_freq, harmonics_list, step) * amplitude
+    return harmonics(math.sin, main_freq, harmonics_list, step) * amplitude
 
 
 def push_instrument3(step):
     k = - step  / 4
     q = step * 2
-    push = np.exp(k) * (1 + np.abs(np.cos(q)))
+    push = math.exp(k) * (1 + abs(math.cos(q)))
     return push * 0.3
