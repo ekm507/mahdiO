@@ -72,3 +72,26 @@ def push_instrument2(step):
     else:
         b = 0
     return guard(b, min_amp, max_amp)
+
+
+def instrument3(main_freq, step):
+
+    harmonics_list = [
+        (1, 0.2),
+        (2, 0.8),
+        (3, 0.5),
+        (4, 0.1),
+        (5, 0.05),
+        (6, 0.02),
+        (7, 0.01)
+    ]
+
+    amplitude = push_instrument3(step)
+    return harmonics(np.sin, main_freq, harmonics_list, step) * amplitude
+
+
+def push_instrument3(step):
+    k = - step  / 4
+    q = step * 2
+    push = np.exp(k) * (1 + np.abs(np.cos(q)))
+    return push * 0.3
