@@ -41,7 +41,7 @@ def create_music2(notes_list, instrument, sampling_rate=48000, note_duration=4.0
     noteFiles = {
         k:
         notes.create_note(
-            tuple(
+            (
                 any2freq(k, note_type),
                 note_duration
             ),
@@ -51,4 +51,8 @@ def create_music2(notes_list, instrument, sampling_rate=48000, note_duration=4.0
     } # what a messy line of code it was!
 
     # now that notes are generated, we are to mix them.
-
+    for note, time in notes_list:
+        for i in range(int(note_duration * sampling_rate)):
+            audio_wave[i + int (time * sampling_rate)] += noteFiles[note][i]
+    
+    return audio_wave
