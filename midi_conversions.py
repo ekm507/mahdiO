@@ -143,3 +143,11 @@ def octaves(freq, fmin=20., fmax=2e4):
        + list(it.takewhile(lambda x: x < fmax,
                            (freq * 2 ** harm for harm in it.count(1))
                           ))
+
+
+# convert any type of note notation to frequency
+def any2freq(note, note_type='midi'):
+  if note_type=='midi':
+    return midi2freq(note)
+  elif note_type=='str':
+    return str2freq(note)
