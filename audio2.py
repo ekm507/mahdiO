@@ -93,7 +93,7 @@ notes3 = [
     (72, fullNote)
 ]
 
-audio_wave3 = music.create_music(notes3, instruments.instrument1, sampling_rate)
+audio_wave3 = music.create_music(notes3, instruments.instrument3, sampling_rate)
 
 
 # file properties
