@@ -1,7 +1,7 @@
 # used for editing wave files
 import wave
 # for basic mathematic operations
-import numpy as np
+import math
 # for using with wave functions
 import struct
 # generate instrument notes for audio
@@ -24,7 +24,7 @@ file = "test.wav"
 
 # normalize
 def norm(x):
-    return  2 * np.pi *x / sampling_rate
+    return  2 * math.pi *x / sampling_rate
 
 # guard a number between infimum and suprimum
 def guard(number, low, high):

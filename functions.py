@@ -3,7 +3,7 @@ from random import random
 # for creating noise
 from secrets import randbelow
 # for simple mathematics operations
-import numpy as np
+import math
 
 # floating point modulo operation
 """
@@ -17,8 +17,8 @@ def modulo(x, b):
 # works like sin function but gives a squarewave.
 def square(x):
     # mirror x on [0 - 2*pi] period
-    a = modulo(x, 2 * np.pi)
-    if a < np.pi:
+    a = modulo(x, 2 * math.pi)
+    if a < math.pi:
         return 1
     else:
         return -1
@@ -26,14 +26,14 @@ def square(x):
 # works like sin function but gives a sawtooth.
 def sawtooth(x):
     # mirror x on [0 - 2*pi] period
-    return modulo(x, 2 * np.pi)
+    return modulo(x, 2 * math.pi)
 
 # works like sin function but gives a triangle.
 def triangle(x):
     # mirror x on [0 - 2*pi] period
-    a = modulo(x, 2 * np.pi)
+    a = modulo(x, 2 * math.pi)
     # normalize a
-    a /= np.pi
+    a /= math.pi
     if a < 1:
         return a - 0.5
     else:
@@ -61,7 +61,7 @@ def guard(number, low, high):
 
 # normalize
 def pi_norm(x, max_x):
-    return  2 * np.pi *x / max_x
+    return  2 * math.pi *x / max_x
 
 
 # generate harmonics for a waveform

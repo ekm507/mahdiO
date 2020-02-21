@@ -1,7 +1,7 @@
 # used for editing wave files
 import wave
 # for basic mathematic operations
-import numpy as np
+import math
 # for using with wave functions
 import struct
 # generate instrument notes for audio

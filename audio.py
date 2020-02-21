@@ -1,7 +1,7 @@
 # used for editing wave files
 import wave
 # for basic mathematic operations
-import numpy as np
+import math
 # for using with wave functions
 import struct
 # generate functions for audio
@@ -31,7 +31,7 @@ so it actually returns t
 """
 # normalize
 def norm(x):
-    return  2 * np.pi *x / sampling_rate
+    return  2 * math.pi *x / sampling_rate
 
 # create a simple audio
 # audio_wave1 = [functions.instrument1(frequency, norm(x)) for x in range(num_samples)]
