@@ -87,3 +87,16 @@ def instrument_sin(freq, step):
     a = 1
 
     return a * harmonics(square, freq, h, step)
+
+
+
+# normalize a list to an amplitude
+def audio_normalize(audio_wave, amplitude=1.0):
+
+    max_amp = max(audio_wave)
+
+    mul = amplitude / max_amp
+    for i in range(len(audio_wave)):
+        audio_wave[i] *= mul
+
+    return audio_wave
