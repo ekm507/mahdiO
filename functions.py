@@ -8,7 +8,7 @@ import math
 # floating point modulo operation
 """
 same as fmod function in C++ STL
-Given two floating-point numbers, this finds the remainder (module).
+Given two floating-point numbers, this finds the remainder (modulo).
 for more info visit wiki page: https://en.wikipedia.org/wiki/Modulo_operation
 """
 def modulo(x, b):
@@ -75,6 +75,8 @@ step: the variable. like time.
 def harmonics(func, main_freq, harmonics_list, step):
     sum = 0
     for h in harmonics_list:
+        # TODO: do h with namedTuple
+        # h[0] = harmonic number, h[1] = harmonic amplitude.
         sum += h[1] * func(h[0] * main_freq * step)
     return sum
 
