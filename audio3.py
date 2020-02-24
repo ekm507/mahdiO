@@ -20,7 +20,7 @@ duration = 0.268 + 0.3 # secounds
 # number of samples to generate
 num_samples = int( sampling_rate * duration)
 # amplitude of the audio
-amplitude = 16000
+amplitude = 32000
 # audio file to be saved into
 file = "test.wav"
 
@@ -35,8 +35,13 @@ notes = [
     (74, 4)
 ]
 
-audio_wave = music.create_music2(notes, instruments.instrument1)
+notes2 = [
+    (71, 0)
+]
 
+audio_wave = music.create_music2(notes, instruments.instrument4, note_duration=1)
+
+audio_wave = functions.audio_normalize(audio_wave, 1)
 
 # file properties
 nframes=num_samples
