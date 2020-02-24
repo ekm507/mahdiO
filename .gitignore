@@ -1,5 +1,5 @@
-test.wav
-__pycache__/functions.cpython-38.pyc
+*.wav
+__pycache__/*.pyc
 *.pyc
 
 tmp.py
