@@ -96,3 +96,23 @@ def push_instrument3(step):
     q = step * 2
     push = math.exp(k) * (1 + abs(math.cos(q)))
     return push * 0.3
+
+def instrument4(main_freq, step):
+    harmonics_list = [
+        (1, 0.5),
+        (3, 1),
+        (5, 0.7),
+        (7, 0.3),
+        (9, 0.1),
+        (11, 0.05)
+    ]
+
+    amplitude = push_instrument4(step)
+
+    return harmonics(math.sin, main_freq, harmonics_list, step) * amplitude
+
+def push_instrument4(step):
+    mp = math.sin(step / 2 + 0.2) / 2
+    sp = math.sin(step * 10) / 6
+    p = mp + sp
+    return guard(p / 6, 0, 1)
