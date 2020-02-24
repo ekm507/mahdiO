@@ -2,7 +2,8 @@
 from functions import guard, harmonics
 # used for basic mathematical operations
 import math
-
+# triangle wave function. used in some of instruments
+from functions import triangle
 
 # a simple music instrument, made using harmonics function.
 # main frequency is the music note frequency to be played
@@ -109,10 +110,13 @@ def instrument4(main_freq, step):
 
     amplitude = push_instrument4(step)
 
-    return harmonics(math.sin, main_freq, harmonics_list, step) * amplitude
+    return harmonics(triangle, main_freq, harmonics_list, step) * amplitude
 
 def push_instrument4(step):
-    mp = math.sin(step / 2 + 0.2) / 2
-    sp = math.sin(step * 10) / 6
-    p = mp + sp
+    if(step < 1.04 * math.pi * 2):
+        mp = math.sin(step / 2 + 0.2) / 2
+        sp = math.sin(step * 10) / 6
+        p = mp + sp
+    else:
+        p = 0
     return guard(p / 6, 0, 1)
