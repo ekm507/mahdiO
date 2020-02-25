@@ -1,5 +1,7 @@
 # python audio
 
+In this branch (`pressure`) we are to add pressure function support for project.
+
 Generate sound effects using mathematics
 
 files in this repo include:
@@ -32,3 +34,4 @@ finally we should save generated audio wave into a .wav (wave) file. when done, 
 
 1. create a plain function for simply saving audio as wav files.
 2. add key pressure function support for instruments.
+3. using threshold of hearing function, help creating better musics.
