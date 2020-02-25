@@ -102,3 +102,20 @@ def audio_normalize(audio_wave, amplitude=1.0):
         audio_wave[i] *= mul
 
     return audio_wave
+
+
+# Heaviside step function
+# default pressure fonction to use with instruments
+# pressure is 1 in this function all the positive time
+def ustep(step):
+    if step < 0:
+        return 0
+    return 1
+
+# Dirac delta function
+# default pressure function to use with some instruments
+def delta(step):
+    if step == 0:
+        return 1
+    return 0
+
