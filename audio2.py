@@ -109,7 +109,10 @@ wav_file=wave.open(file, 'w')
 wav_file.setparams((nchannels, sampwidth, int(sampling_rate), nframes, comptype, compname))
 
 # write the audio to file
-for s in audio_wave3:
-    gs = guard(s, -1, 1)
-    wav_file.writeframes(struct.pack('h', int(gs*amplitude)))
 
+print('writing to disk')
+
+writable_audio = bytearray()
+for s in audio_wave3:
+    writable_audio += struct.pack('h', int(s*amplitude))
+wav_file.writeframes(writable_audio)

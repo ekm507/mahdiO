@@ -38,7 +38,7 @@ notes = [
 notes2 = [
     (71, 0)
 ]
-
+print('generating music')
 audio_wave = music.create_music2(notes, instruments.instrument4, note_duration=1)
 
 audio_wave = functions.audio_normalize(audio_wave, 1)
@@ -55,8 +55,11 @@ wav_file=wave.open(file, 'w')
 # set properties
 wav_file.setparams((nchannels, sampwidth, int(sampling_rate), nframes, comptype, compname))
 
-# write the audio to file
+print('writing to disk')
+
+writable_audio = bytearray()
 for s in audio_wave:
     gs = functions.guard(s, -1, 1)
-    wav_file.writeframes(struct.pack('h', int(gs*amplitude)))
+    writable_audio += struct.pack('h', int(gs*amplitude))
+wav_file.writeframes(writable_audio)
 
