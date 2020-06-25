@@ -9,6 +9,8 @@ files in this repo include:
 * `midi_conversions.py` for converting note number to frequency.
 * `instruments.py` for describing each instrument.
 * `music.py` for generating music.
+* `write.py` for writing generated audio into a wave file
+* `read_midi.py` for reading notes data from `.mid` files
 * `audio*.py` for test.
 
 ## how it works
@@ -29,6 +31,8 @@ look up `audio*.py` to see how a list of notes by time and some more details can
 finally we should save generated audio wave into a .wav (wave) file. when done, it's done!
 
 ## TODO
+1. different tracks in midi file, each have their own instrument. add a support for this
 
-1. create a plain function for simply saving audio as wav files.
-2. add key pressure function support for instruments.
+2. get timing info from midi file
+
+3. write better instruments.
