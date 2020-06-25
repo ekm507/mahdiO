@@ -1,4 +1,5 @@
 *.wav
+*.mid
 __pycache__/*.pyc
 *.pyc
 

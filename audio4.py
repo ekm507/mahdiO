@@ -2,19 +2,10 @@ import instruments
 import music
 import functions
 from write import write_to_file
+from read_midi import read_midi
 
-notes = [
-    (71, 0),
-    (72, 0.5),
-    (75, 1),
-    (78, 1.5),
-    (77, 2.5),
-    (76, 3),
-    (75, 3.5),
-    (74, 4),
-    (75, 5),
-    (74, 5.5),
-]
+
+notes = read_midi('1.mid')
 
 print('generating audio')
 
