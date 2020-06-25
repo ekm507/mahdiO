@@ -36,3 +36,7 @@ finally we should save generated audio wave into a .wav (wave) file. when done, 
 2. get timing info from midi file
 
 3. write better instruments.
+
+4. make documentation for code. maybe rewrite this README file too.
+
+5. make a wiki for developers so it will be easier to develope.
