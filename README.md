@@ -1,8 +1,19 @@
-# python audio
+# MahdiO: generate music
 
-Generate sound effects using mathematics
+Generate music sound effects using mathematics.
 
-files in this repo include:
+## how to use
+
+well, this project is not written the best way of it. I mean It works, but using this is a bit difficult.
+
+there are some functions in this project. working with each other to craft you a music.  
+the file `audio4.py` shows you an example how to use it.  
+it simply gets a midi file as input and generates a music based on notes the file provides.
+
+but I will make a better wiki for this later! I promise!
+
+
+## files in this repo
 
 * `functions.py` for generating basic audio functions.
 * `notes.py` for generating notes.
@@ -26,11 +37,14 @@ different notes have different frequencies. harmonics change respecting to main 
 
 combining notes by synthesizing them, we create a music. each note has a duration and a note number. look up `music.py` to see how it works.
 
+so now we can generate sounds but we need notes! the funcion `read_midi` in file `read_midi.py` gets a midi file as input and extracts notes out of it to use.
+
 now we are ready to generate a music from zero!  
 look up `audio*.py` to see how a list of notes by time and some more details can make a nice music!  
-finally we should save generated audio wave into a .wav (wave) file. when done, it's done!
+finally we should save generated audio wave into a .wav (wave) file. the function `write_to_file` in `write.py` does it. and  when done, it's done!
 
 ## TODO
+
 1. different tracks in midi file, each have their own instrument. add a support for this
 
 2. get timing info from midi file
